@@ -30,7 +30,7 @@ module.exports = {
   update: function(req, res) {
     db.Blog
       .updateOne({ _id: req.params.id }, 
-        { $push: { response: req.body.response } },) 
+        { $push: { response: req.body.response } },)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
       },
