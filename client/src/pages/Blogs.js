@@ -13,7 +13,7 @@ class Blogs extends Component {
     topic: "",
     author: "",
     synopsis: "",
-    response: ""
+    response: []
   };
 
   componentDidMount() {

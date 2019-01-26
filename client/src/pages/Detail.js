@@ -13,7 +13,7 @@ class Detail extends Component {
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   componentDidMount() {
     API.getBlog(this.props.match.params.id)
-      .then(res => this.setState({ blog: res.data }))
+      .then(res => this.setState({ blog: res.data, }))
       .catch(err => console.log(err));
   }
 
@@ -25,20 +25,25 @@ class Detail extends Component {
       .catch(err => console.log(err));
   };
 
-  handleInputChange = event => {
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
+
+  handleResponseChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      blog: { ...this.state.blog, response: value }
     });
   };
   
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.response) {
-      API.saveBlog({
-
-        response: this.state.response,
-      })
+    console.log(this.state);
+    if (this.state.blog.response) {
+      API.updateBlog(this.state.blog._id, this.state.blog)
         .then(res => this.loadBlogs())
         .catch(err => console.log(err));
     }
@@ -65,8 +70,8 @@ class Detail extends Component {
               </p>
               <form>
               <TextArea
-                value={this.state.response}
-                onChange={this.handleInputChange}
+                value={this.state.blog.response}
+                onChange={this.handleResponseChange}
                 name="response"
                 placeholder="Provide Response"
               />
