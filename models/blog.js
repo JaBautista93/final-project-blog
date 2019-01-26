@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const blogSchema = new Schema({
   topic: { type: String, required: true },
   author: { type: String, required: true },
-  synopsis: String,
+  synopsis: { type: String, required: true },
+  response: String,
   date: { type: Date, default: Date.now }
 });
 

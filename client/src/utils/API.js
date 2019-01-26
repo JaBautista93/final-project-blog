@@ -16,5 +16,9 @@ export default {
   // Saves a blog to the database
   saveBlog: function(blogData) {
     return axios.post("/api/blogs", blogData);
-  }
+  },
+  // Updates the blog with the given id
+  updateBlog: function(id) {
+    return axios.put("/api/blogs/" + id);
+  },
 };

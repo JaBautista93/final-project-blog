@@ -14,6 +14,7 @@ const blogSeed = [
     author: "Blog Master",
     synopsis:
       "The purpose of this blog is to connect with others to help or get help with coding.  Stay positive and be respectful.  Thank you foring using our site",
+    response: "We are here to help you just ask or email us",
     date: new Date(Date.now())
   },
   

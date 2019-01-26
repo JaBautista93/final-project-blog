@@ -12,7 +12,8 @@ class Blogs extends Component {
     blogs: [],
     topic: "",
     author: "",
-    synopsis: ""
+    synopsis: "",
+    response: ""
   };
 
   componentDidMount() {
@@ -46,7 +47,8 @@ class Blogs extends Component {
       API.saveBlog({
         topic: this.state.topic,
         author: this.state.author,
-        synopsis: this.state.synopsis
+        synopsis: this.state.synopsis,
+        response: this.state.response
       })
         .then(res => this.loadBlogs())
         .catch(err => console.log(err));
