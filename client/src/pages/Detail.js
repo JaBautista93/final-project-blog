@@ -15,8 +15,16 @@ class Detail extends Component {
     API.getBlog(this.props.match.params.id)
       .then(res => this.setState({ blog: res.data, }))
       .catch(err => console.log(err));
-  }
-
+  };
+  
+  loadBlogs = () => {
+    API.getBlogs()
+      .then(res =>
+        this.setState({ blogs: res.data, topic: "", author: "", synopsis: "" })
+      )
+      .catch(err => console.log(err));
+  };
+  
   updateBlogs = () => {
     API.updateBlog()
       .then(res =>
@@ -25,15 +33,8 @@ class Detail extends Component {
       .catch(err => console.log(err));
   };
 
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
-
   handleResponseChange = event => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     this.setState({
       blog: { ...this.state.blog, response: value }
     });

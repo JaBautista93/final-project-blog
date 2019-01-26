@@ -5,7 +5,7 @@ const blogSchema = new Schema({
   topic: { type: String, required: true },
   author: { type: String, required: true },
   synopsis: { type: String, required: true },
-  response: String,
+  response: Array,
   date: { type: Date, default: Date.now }
 });
 
