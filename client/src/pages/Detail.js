@@ -21,12 +21,12 @@ class Detail extends Component {
     this.loadBlog();
   };
   
-  loadBlog = () => {
-    API.getBlog(this.props.match.params.id)
-      .then(res => {
-        console.log('DATA: ', res.data);
-        this.setState({ blog: res.data ,response:""});
-      })
+  loadBlogs = () => {
+    API.getBlog()
+      .then(res =>
+        this.setState({ blog: res.data, topic: "", author: "", synopsis: "" })
+      )
+
       .catch(err => console.log(err));
   };
   
@@ -65,6 +65,7 @@ class Detail extends Component {
     const blog = this.state.blog;
     const { topic, author, synopsis, response, _id} = blog;
     return (
+
       <Container fluid>
         <Row>
           <Col size="md-12">
@@ -75,6 +76,7 @@ class Detail extends Component {
             </Jumbotron>
           </Col>
         </Row>
+
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
