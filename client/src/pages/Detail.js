@@ -12,7 +12,8 @@ import { List, ListItem, } from "../components/List";
 
 class Detail extends Component {
   state = {
-    blog: {}
+    blog: {},
+    response:""
   };
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
@@ -24,7 +25,7 @@ class Detail extends Component {
     API.getBlog(this.props.match.params.id)
       .then(res => {
         console.log('DATA: ', res.data);
-        this.setState({ blog: res.data });
+        this.setState({ blog: res.data ,response:""});
       })
       .catch(err => console.log(err));
   };
@@ -48,7 +49,7 @@ class Detail extends Component {
     event.preventDefault();
     console.log(this.state);
     if (this.state.blog.response) {
-      API.updateBlog(this.state.blog._id, this.state.blog)
+      API.saveBlog(this.state.blog._id, this.state.blog)
         .then(res => this.loadBlog())
         .catch(err => console.log(err));
     }
@@ -81,6 +82,10 @@ class Detail extends Component {
               <p>
                 {synopsis}
               </p>
+            <form>
+            {this.state.blog.response}
+            </form>             
+              
               <p>
                 <List>
                   <ListItem key={_id}>
