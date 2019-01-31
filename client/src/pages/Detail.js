@@ -18,9 +18,9 @@ class Detail extends Component {
   };
   
   loadBlogs = () => {
-    API.getBlogs()
+    API.getBlog()
       .then(res =>
-        this.setState({ blogs: res.data, topic: "", author: "", synopsis: "" })
+        this.setState({ blog: res.data, topic: "", author: "", synopsis: "" })
       )
       .catch(err => console.log(err));
   };
@@ -52,6 +52,7 @@ class Detail extends Component {
 
   render() {
     return (
+
       <Container fluid>
         <Row>
           <Col size="md-12">
@@ -62,6 +63,7 @@ class Detail extends Component {
             </Jumbotron>
           </Col>
         </Row>
+
         <Row>
           <Col size="md-10 md-offset-1">
             <article>
